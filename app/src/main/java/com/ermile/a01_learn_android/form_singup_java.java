@@ -63,7 +63,7 @@ public class form_singup_java implements View.OnClickListener, CompoundButton.On
                                 post_info_form.putExtra ( "post_email",emaill );
                             }
                         activity_first.startActivity ( post_info_form );
-                        
+
                         Toast.makeText ( activity_first , "اطلاعات ارسال شد!" , Toast.LENGTH_SHORT ).show ( );
                     }
             }
