@@ -1,6 +1,7 @@
 package com.ermile.a01_learn_android;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -53,7 +54,17 @@ public class form_singup_java implements View.OnClickListener, CompoundButton.On
 
                 if (treejon(fname,lname,numberr,emaill))
                     {
-                        Toast.makeText ( activity_first , "اطلاعات ارسال میشه!" , Toast.LENGTH_SHORT ).show ( );
+                        Intent post_info_form= new Intent ( activity_first,activity_two.class );
+                        post_info_form.putExtra ( "post_lname",lname );
+                        post_info_form.putExtra ( "post_fname",fname);
+                        post_info_form.putExtra ( "post_number",numberr );
+                        if (chbox.isChecked ())
+                            {
+                                post_info_form.putExtra ( "post_email",emaill );
+                            }
+                        activity_first.startActivity ( post_info_form );
+                        
+                        Toast.makeText ( activity_first , "اطلاعات ارسال شد!" , Toast.LENGTH_SHORT ).show ( );
                     }
             }
 
