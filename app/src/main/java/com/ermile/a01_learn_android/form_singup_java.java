@@ -74,22 +74,26 @@ public class form_singup_java implements View.OnClickListener, CompoundButton.On
                 return false;
             }
 
-        if (!numberr.isEmpty () && numberr.length () !=11 || ! numberr.startsWith ( "09" ))
+        if ( numberr.length () !=11 || ! numberr.startsWith ( "09" ))
             {
                 Toast.makeText ( activity_first , "شماره تلفن اشتباه است" , Toast.LENGTH_SHORT ).show ( );
                 et_number.requestFocus ();
                 return false;
             }
 
-        if (emaill.lastIndexOf ( '@' )<=0 || 
-                emaill.contains ( "." ) || 
-                emaill.lastIndexOf ( "." ) < emaill.lastIndexOf ( '@' ) || 
-                emaill.split ( "@" ).length > 2 )
-            {
-                Toast.makeText ( activity_first , "ایمیل اشتباه است" , Toast.LENGTH_SHORT ).show ( );
-                et_email.requestFocus ();
-                return false;
-            }
+
+            if (chbox.isChecked ())
+                {
+                    if (emaill.isEmpty () || emaill.lastIndexOf ( '@' )<=0 ||
+                           ! emaill.contains ( "." ) ||
+                            emaill.lastIndexOf ( "." ) < emaill.lastIndexOf ( '@' ) ||
+                            emaill.split ( "@" ).length > 2 )
+                    {
+                        Toast.makeText ( activity_first , "ایمیل اشتباه است" , Toast.LENGTH_SHORT ).show ( );
+                        et_email.requestFocus ();
+                        return false;
+                    }
+                }else {return  true;}
             
 
      return true; }
@@ -98,7 +102,7 @@ public class form_singup_java implements View.OnClickListener, CompoundButton.On
     public void onCheckedChanged(CompoundButton cheki_forchbox , boolean isChecked) {
         if (cheki_forchbox.getId ()== R.id.chbox)
             {
-                et_number.setEnabled ( isChecked );
+                et_email.setEnabled ( isChecked );
             }
 
     }

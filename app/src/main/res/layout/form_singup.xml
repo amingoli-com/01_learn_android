@@ -39,7 +39,7 @@
         android:layout_height="wrap_content" />
 
     <CheckBox
-        android:text="تمایلی به ارسال ایمیل ندارم"
+        android:text="ایمیل وارد میکنید؟"
         android:id="@+id/chbox"
         android:checked="true"
         android:layout_width="match_parent"
