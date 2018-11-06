@@ -9,5 +9,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_main );
+        form_singup_java form = new form_singup_java (this, R.id.layout_form );
     }
 }
