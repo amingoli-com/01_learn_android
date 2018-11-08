@@ -12,17 +12,17 @@ import android.widget.Toast;
 
 public class form_singup_java implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
-    private Activity activity_first;
+    private Activity activity;
     private LinearLayout linearlayout_1;
     private EditText et_firstname,et_lastname,et_number,et_email;
     private CheckBox chbox;
     private Button btn_send;
 
 
-    public form_singup_java(Activity activity_two,int layout)
+    public form_singup_java(Activity activity,int layout)
         {
-            this.activity_first=activity_two;
-            linearlayout_1=activity_first.findViewById ( layout );
+            this.activity= activity;
+            linearlayout_1=activity.findViewById ( layout );
             init();
         }
 
@@ -47,7 +47,7 @@ public class form_singup_java implements View.OnClickListener, CompoundButton.On
     public void onClick(View v) {
         if (v.getId ()==btn_send.getId ())
             {
-                Toast.makeText ( activity_first , "اطلاعات ارسال شد!" , Toast.LENGTH_SHORT ).show ( );
+                Toast.makeText ( activity , "اطلاعات ارسال شد!" , Toast.LENGTH_SHORT ).show ( );
                 String fname=et_firstname.getText ().toString ().trim ();
                 String lname=et_lastname.getText ().toString ().trim ();
                 String numberr=et_number.getText ().toString ().trim ();
@@ -55,7 +55,7 @@ public class form_singup_java implements View.OnClickListener, CompoundButton.On
 
                 if (treejon(fname,lname,numberr,emaill))
                     {
-                        Intent post_info_form= new Intent ( activity_first,activity_twoo.class );
+                        Intent post_info_form= new Intent ( activity, activity_twoo.class );
                         post_info_form.putExtra ( "post_fname",  fname );
                         post_info_form.putExtra ( "post_lname",  lname);
                         post_info_form.putExtra ( "post_number", numberr );
@@ -63,7 +63,7 @@ public class form_singup_java implements View.OnClickListener, CompoundButton.On
                             {
                                 post_info_form.putExtra ( "post_email",emaill );
                             }
-                        activity_first.startActivity ( post_info_form );
+                        activity.startActivity ( post_info_form );
 
                     }
             }
@@ -73,21 +73,21 @@ public class form_singup_java implements View.OnClickListener, CompoundButton.On
     private boolean treejon(String fname , String lname , String numberr , String emaill) {
         if (fname.length () < 3)
             {
-                Toast.makeText ( activity_first , "نام صحیح نیست" , Toast.LENGTH_SHORT ).show ( );
+                Toast.makeText ( activity , "نام صحیح نیست" , Toast.LENGTH_SHORT ).show ( );
                 et_firstname.requestFocus ();
                 return false;
             }
 
         if (lname.length () < 4)
             {
-                Toast.makeText ( activity_first , "نام خانوادگی صحیح نیست" , Toast.LENGTH_SHORT ).show ( );
+                Toast.makeText ( activity , "نام خانوادگی صحیح نیست" , Toast.LENGTH_SHORT ).show ( );
                 et_lastname.requestFocus ();
                 return false;
             }
 
         if ( numberr.length () !=11 || ! numberr.startsWith ( "09" ))
             {
-                Toast.makeText ( activity_first , "شماره تلفن اشتباه است" , Toast.LENGTH_SHORT ).show ( );
+                Toast.makeText ( activity , "شماره تلفن اشتباه است" , Toast.LENGTH_SHORT ).show ( );
                 et_number.requestFocus ();
                 return false;
             }
@@ -100,7 +100,7 @@ public class form_singup_java implements View.OnClickListener, CompoundButton.On
                             emaill.lastIndexOf ( "." ) < emaill.lastIndexOf ( '@' ) ||
                             emaill.split ( "@" ).length > 2 )
                     {
-                        Toast.makeText ( activity_first , "ایمیل اشتباه است" , Toast.LENGTH_SHORT ).show ( );
+                        Toast.makeText ( activity , "ایمیل اشتباه است" , Toast.LENGTH_SHORT ).show ( );
                         et_email.requestFocus ();
                         return false;
                     }
