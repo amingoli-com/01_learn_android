@@ -47,6 +47,7 @@ public class form_singup_java implements View.OnClickListener, CompoundButton.On
     public void onClick(View v) {
         if (v.getId ()==btn_send.getId ())
             {
+                Toast.makeText ( activity_first , "اطلاعات ارسال شد!" , Toast.LENGTH_SHORT ).show ( );
                 String fname=et_firstname.getText ().toString ().trim ();
                 String lname=et_lastname.getText ().toString ().trim ();
                 String numberr=et_number.getText ().toString ().trim ();
@@ -54,17 +55,16 @@ public class form_singup_java implements View.OnClickListener, CompoundButton.On
 
                 if (treejon(fname,lname,numberr,emaill))
                     {
-                        Intent post_info_form= new Intent ( activity_first,activity_two.class );
-                        post_info_form.putExtra ( "post_lname",lname );
-                        post_info_form.putExtra ( "post_fname",fname);
-                        post_info_form.putExtra ( "post_number",numberr );
+                        Intent post_info_form= new Intent ( activity_first,activity_twoo.class );
+                        post_info_form.putExtra ( "post_fname",  fname );
+                        post_info_form.putExtra ( "post_lname",  lname);
+                        post_info_form.putExtra ( "post_number", numberr );
                         if (chbox.isChecked ())
                             {
                                 post_info_form.putExtra ( "post_email",emaill );
                             }
                         activity_first.startActivity ( post_info_form );
 
-                        Toast.makeText ( activity_first , "اطلاعات ارسال شد!" , Toast.LENGTH_SHORT ).show ( );
                     }
             }
 

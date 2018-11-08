@@ -4,14 +4,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 
-public class activity_two extends AppCompatActivity {
+public class activity_twoo extends AppCompatActivity {
     Button btn_fname,btn_lname,btn_number,btn_email;
 //    Button btn_ok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
-        setContentView ( R.layout.activity_two );
+        setContentView ( R.layout.activity_twoo );
 
         btn_fname=findViewById ( R.id.btn_fname);
         btn_lname=findViewById ( R.id.btn_lname);
