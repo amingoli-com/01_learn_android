@@ -47,14 +47,15 @@ public class form_singup_java implements View.OnClickListener, CompoundButton.On
     public void onClick(View v) {
         if (v.getId ()==btn_send.getId ())
             {
-                Toast.makeText ( activity , "اطلاعات ارسال شد!" , Toast.LENGTH_SHORT ).show ( );
+
                 String fname=et_firstname.getText ().toString ().trim ();
                 String lname=et_lastname.getText ().toString ().trim ();
                 String numberr=et_number.getText ().toString ().trim ();
                 String emaill=et_email.getText ().toString ().trim ();
 
-                if (treejon(fname,lname,numberr,emaill))
+                if (treejon(fname ,lname ,numberr ,emaill ))
                     {
+                        Toast.makeText ( activity , "اطلاعات ارسال شد!" , Toast.LENGTH_SHORT ).show ( );
                         Intent post_info_form= new Intent ( activity, activity_twoo.class );
                         post_info_form.putExtra ( "post_fname",  fname );
                         post_info_form.putExtra ( "post_lname",  lname);
@@ -78,7 +79,7 @@ public class form_singup_java implements View.OnClickListener, CompoundButton.On
                 return false;
             }
 
-        if (lname.length () < 4)
+        if (lname.length () < 3)
             {
                 Toast.makeText ( activity , "نام خانوادگی صحیح نیست" , Toast.LENGTH_SHORT ).show ( );
                 et_lastname.requestFocus ();
@@ -93,18 +94,17 @@ public class form_singup_java implements View.OnClickListener, CompoundButton.On
             }
 
 
-            if (chbox.isChecked ())
-                {
-                    if (emaill.isEmpty () || emaill.lastIndexOf ( '@' )<=0 ||
-                           ! emaill.contains ( "." ) ||
-                            emaill.lastIndexOf ( "." ) < emaill.lastIndexOf ( '@' ) ||
-                            emaill.split ( "@" ).length > 2 )
-                    {
-                        Toast.makeText ( activity , "ایمیل اشتباه است" , Toast.LENGTH_SHORT ).show ( );
-                        et_email.requestFocus ();
-                        return false;
-                    }
-                }else {return  true;}
+        if (    emaill.isEmpty () ||
+                emaill.lastIndexOf ( '@' )<=0 ||
+                !emaill.contains ( "." ) ||
+                emaill.lastIndexOf ( "." ) < emaill.lastIndexOf ( '@' ) ||
+                emaill.split ( "@" ).length > 2 )
+            {
+                Toast.makeText ( activity , "ایمیل اشتباه است" , Toast.LENGTH_SHORT ).show ( );
+                et_email.requestFocus ();
+                return false;
+                }
+
             
 
      return true; }

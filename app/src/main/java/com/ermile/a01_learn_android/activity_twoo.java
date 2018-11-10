@@ -1,5 +1,6 @@
 package com.ermile.a01_learn_android;
 
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -11,7 +12,7 @@ public class activity_twoo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
-        setContentView ( R.layout.activity_twoo );
+        setContentView(R.layout.activity_twoo);
 
         btn_fname=findViewById ( R.id.btn_fname);
         btn_lname=findViewById ( R.id.btn_lname);
@@ -20,12 +21,12 @@ public class activity_twoo extends AppCompatActivity {
 //        btn_ok=findViewById ( R.id.btn_ok);
 
         Bundle getinfo_form = getIntent ().getExtras ();
-        if (getinfo_form !=null)
+        if (getinfo_form != null)
             {
-                String get_fname=" ";
-                String get_lname=" ";
-                String get_number=" ";
-                String get_email=" ";
+                String get_fname="";
+                String get_lname="";
+                String get_number="";
+                String get_email="";
 
                 if (getinfo_form.containsKey ( "post_fname" )){
                     get_fname = getinfo_form.getString ( "post_fname" );
