@@ -3,6 +3,7 @@ package com.ermile.a01_learn_android;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 
 public class activity_twoo extends AppCompatActivity {
@@ -13,6 +14,14 @@ public class activity_twoo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView(R.layout.activity_twoo);
+
+
+        if (getSupportActionBar ( ) != null)
+        {
+            getSupportActionBar ().setDisplayHomeAsUpEnabled ( true );
+        }
+
+
 
         btn_fname=findViewById ( R.id.btn_fname);
         btn_lname=findViewById ( R.id.btn_lname);
@@ -45,6 +54,17 @@ public class activity_twoo extends AppCompatActivity {
                 btn_lname.setText ( get_lname );
                 btn_number.setText ( get_number );
                 btn_email.setText ( get_email );
+
             }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id=item.getItemId();
+
+        if (id == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -105,7 +105,7 @@ public class form_singup_java implements View.OnClickListener, CompoundButton.On
                 return false;
                 }
 
-            
+
 
      return true; }
 
