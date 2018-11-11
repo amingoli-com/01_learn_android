@@ -48,26 +48,34 @@ public class form_singup_java implements View.OnClickListener, CompoundButton.On
         if (v.getId ()==btn_send.getId ())
             {
 
-                String fname=et_firstname.getText ().toString ().trim ();
-                String lname=et_lastname.getText ().toString ().trim ();
-                String numberr=et_number.getText ().toString ().trim ();
-                String emaill=et_email.getText ().toString ().trim ();
+                String fname = et_firstname.getText( ).toString( ).trim( );
+                String lname = et_lastname.getText( ).toString( ).trim( );
+                String numberr = et_number.getText( ).toString( ).trim( );
+                String emaill = et_email.getText( ).toString( ).trim( );
 
                 if (treejon(fname ,lname ,numberr ,emaill ))
                     {
-                        Toast.makeText ( activity , "اطلاعات ارسال شد!" , Toast.LENGTH_SHORT ).show ( );
-                        Intent post_info_form= new Intent ( activity, activity_twoo.class );
-                        post_info_form.putExtra ( "post_fname",  fname );
-                        post_info_form.putExtra ( "post_lname",  lname);
-                        post_info_form.putExtra ( "post_number", numberr );
-                        if (chbox.isChecked ())
-                            {
-                                post_info_form.putExtra ( "post_email",emaill );
-                            }
-                        activity.startActivity ( post_info_form );
+                        Toast.makeText(activity , "اطلاعات ارسال شد!" , Toast.LENGTH_SHORT).show( );
+                        Intent post_info_form = new Intent(activity , activity_twoo.class);
+                        post_info_form.putExtra("post_fname" , fname);
+                        post_info_form.putExtra("post_lname" , lname);
+                        post_info_form.putExtra("post_number" , numberr);
+                        if (chbox.isChecked( )) {
+                            post_info_form.putExtra("post_email" , emaill);
+                        }
+                        activity.startActivity(post_info_form);
 
                     }
             }
+
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton cheki_forchbox , boolean isChecked) {
+        if (cheki_forchbox.getId ()== R.id.chbox)
+        {
+            et_email.setEnabled ( isChecked );
+        }
 
     }
 
@@ -94,7 +102,7 @@ public class form_singup_java implements View.OnClickListener, CompoundButton.On
             }
 
 
-        if (    emaill.isEmpty () ||
+        if (    !emaill.isEmpty () &&
                 emaill.lastIndexOf ( '@' )<=0 ||
                 !emaill.contains ( "." ) ||
                 emaill.lastIndexOf ( "." ) < emaill.lastIndexOf ( '@' ) ||
@@ -108,13 +116,4 @@ public class form_singup_java implements View.OnClickListener, CompoundButton.On
 
 
      return true; }
-
-    @Override
-    public void onCheckedChanged(CompoundButton cheki_forchbox , boolean isChecked) {
-        if (cheki_forchbox.getId ()== R.id.chbox)
-            {
-                et_email.setEnabled ( isChecked );
-            }
-
-    }
 }
